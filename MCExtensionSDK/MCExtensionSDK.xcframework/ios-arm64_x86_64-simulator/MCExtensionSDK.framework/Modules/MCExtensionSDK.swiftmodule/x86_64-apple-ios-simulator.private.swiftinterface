@@ -1,0 +1,44 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name MCExtensionSDK
+import Compression
+import DeveloperToolsSupport
+import Foundation
+@_exported import MCExtensionSDK
+import Swift
+import SwiftUI
+import UIKit
+import UserNotifications
+import UserNotificationsUI
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import os
+@objc(SFMCNotificationServiceConfig) final public class SFNotificationServiceConfig : ObjectiveC.NSObject {
+  @objc final public let logLevel: MCExtensionSDK.LogLevel
+  @objc public init(logLevel: MCExtensionSDK.LogLevel = .none)
+  @objc deinit
+}
+@objc(SFMCExtensionSdkLogLevel) public enum LogLevel : Swift.Int {
+  case debug
+  case warn
+  case error
+  case fault
+  case none
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension MCExtensionSDK.LogLevel : Swift.Comparable {
+  public static func < (left: MCExtensionSDK.LogLevel, right: MCExtensionSDK.LogLevel) -> Swift.Bool
+}
+@objc(SFMCContentExtensionConfig) final public class SFContentExtensionConfig : ObjectiveC.NSObject {
+  @objc final public let logLevel: MCExtensionSDK.LogLevel
+  @objc final public let timeoutIntervalForRequest: Foundation.TimeInterval
+  @objc public init(logLevel: MCExtensionSDK.LogLevel = .none, timeoutIntervalForRequest: Foundation.TimeInterval)
+  @objc deinit
+}
+extension MCExtensionSDK.LogLevel : Swift.Hashable {}
+extension MCExtensionSDK.LogLevel : Swift.RawRepresentable {}
